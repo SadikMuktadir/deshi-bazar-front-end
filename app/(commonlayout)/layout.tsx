@@ -4,7 +4,9 @@ import Navbar from '@/src/components/shared/Navbar';
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <Navbar></Navbar>
+      <div className='mx-5'>
+        <Navbar></Navbar>
+      </div>
       {children}
       <Footer></Footer>
     </div>
