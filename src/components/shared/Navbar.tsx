@@ -5,10 +5,27 @@ import logo from '../../../public/image/logo.png';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
-import { LucideSearch } from 'lucide-react';
+import { LucideSearch, ShoppingCart, User } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useUser } from '@/src/context/UserProvider';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { logOut } from '@/src/services/authservices';
+
 const Navbar = () => {
   const pathname = usePathname();
+  const { user, setLoading } = useUser();
+
+  const handleLogout = () => {
+    logOut();
+    setLoading(true);
+  };
 
   return (
     <div className='flex justify-between'>
@@ -67,10 +84,45 @@ const Navbar = () => {
         <LucideSearch className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' />
       </div>
       <div className='flex my-auto'>
-        <div className='mr-5'>
-          <Link href='/register'>
-            <Button
-              className=' cursor-pointer
+        {user ? (
+          <>
+            <div className='flex'>
+              <div className='mr-10 cursor-pointer'>
+                <ShoppingCart />
+              </div>
+              <div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className='cursor-pointer'>
+                    <User />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>Team</DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <nav>
+                        <Button
+                          className='cursor-pointer bg-[#db4444] hover:bg-[#db4444]'
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </Button>
+                      </nav>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            {' '}
+            <div className='mr-5'>
+              <Link href='/register'>
+                <Button
+                  className=' cursor-pointer
     rounded-none
     bg-[#db4444]
     text-white
@@ -79,15 +131,15 @@ const Navbar = () => {
     hover:text-black
     hover:border-[#db4444]
     transition-colors'
-            >
-              Register
-            </Button>
-          </Link>
-        </div>
-        <div>
-          <Link href='/login'>
-            <Button
-              className=' cursor-pointer
+                >
+                  Register
+                </Button>
+              </Link>
+            </div>
+            <div>
+              <Link href='/login'>
+                <Button
+                  className=' cursor-pointer
     rounded-none
     bg-[#db4444]
     text-white
@@ -96,11 +148,13 @@ const Navbar = () => {
     hover:text-black
     hover:border-[#db4444]
     transition-colors'
-            >
-              login
-            </Button>
-          </Link>
-        </div>
+                >
+                  login
+                </Button>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
