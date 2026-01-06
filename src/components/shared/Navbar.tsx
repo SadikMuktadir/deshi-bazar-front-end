@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { LucideSearch, ShoppingCart, User } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useUser } from '@/src/context/UserProvider';
 import {
   DropdownMenu,
@@ -20,11 +20,15 @@ import { logOut } from '@/src/services/authservices';
 
 const Navbar = () => {
   const pathname = usePathname();
-  const { user, setLoading } = useUser();
+  const { user, setUser, setLoading } = useUser();
+  const router = useRouter();
+  const handleLogout = async () => {
+    await logOut();
+    setUser(null);
+    setLoading(false);
 
-  const handleLogout = () => {
-    logOut();
-    setLoading(true);
+    router.refresh();
+    router.push('/login');
   };
 
   return (

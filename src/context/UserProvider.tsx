@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/set-state-in-effect */
+
 import {
   createContext,
   Dispatch,
@@ -24,14 +24,19 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   const handleUser = async () => {
-    const user = await currentUser();
-    setUser(user);
-    setLoading(false);
+    try {
+      const user = await currentUser();
+      setUser(user);
+    } catch {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     handleUser();
-  }, [loading]);
+  }, []);
 
   return (
     <div>
