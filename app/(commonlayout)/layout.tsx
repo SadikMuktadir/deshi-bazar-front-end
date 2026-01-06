@@ -8,7 +8,9 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
         <Navbar></Navbar>
       </div>
       {children}
-      <Footer></Footer>
+      <div className='mt-[50px]'>
+        <Footer></Footer>
+      </div>
     </div>
   );
 };
