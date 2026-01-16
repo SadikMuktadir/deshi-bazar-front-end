@@ -1,4 +1,4 @@
-import TimerCom from './TimerCom';
+// import TimerCom from './TimerCom';
 
 const FlashSales = () => {
   return (
@@ -7,9 +7,9 @@ const FlashSales = () => {
         <div className='mr-20'>
           <p className='text-[36px] font-bold'>Flash Sales</p>
         </div>
-        <div>
+        {/* <div>
           <TimerCom></TimerCom>
-        </div>
+        </div> */}
       </div>
     </div>
   );
