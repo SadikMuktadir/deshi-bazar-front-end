@@ -64,7 +64,7 @@ const Navbar = () => {
               About
             </Link>
           </li>
-          <li>
+          <li className='mr-10'>
             <Link
               href='/contact'
               className={`relative group
@@ -76,6 +76,9 @@ const Navbar = () => {
             >
               Contact
             </Link>
+          </li>
+          <li>
+            <Link href={`/dashboard/${user?.role}/my-profile`}>Dashboard</Link>
           </li>
         </ul>
       </div>
