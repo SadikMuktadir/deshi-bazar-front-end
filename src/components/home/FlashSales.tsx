@@ -1,5 +1,7 @@
 // import TimerCom from './TimerCom';
 
+import HomeFlashSale from '../card/HomeFlashSale';
+
 const FlashSales = () => {
   return (
     <div>
@@ -10,6 +12,9 @@ const FlashSales = () => {
         {/* <div>
           <TimerCom></TimerCom>
         </div> */}
+      </div>
+      <div>
+        <HomeFlashSale></HomeFlashSale>
       </div>
     </div>
   );

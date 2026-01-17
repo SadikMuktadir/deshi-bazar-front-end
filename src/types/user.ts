@@ -6,3 +6,12 @@ export interface IUser {
   iat?: number;
   exp?: number;
 }
+
+export interface IProduct {
+  _id: string;
+  image: string;
+  name: string;
+  price: number;
+  rating: number;
+  category?: 'Phone' | 'Computer';
+}

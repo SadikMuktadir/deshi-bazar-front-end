@@ -1,0 +1,28 @@
+'use server';
+
+import { cookies } from 'next/headers';
+
+export const getAllProducts = async () => {
+  try {
+    const token = (await cookies()).get('token')?.value;
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/all-product`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error fetching furniture: ${res.statusText}`);
+    }
+
+    const result = await res.json();
+
+    return Array.isArray(result?.data) ? result.data : [];
+  } catch (error) {
+    console.log(error);
+  }
+};
