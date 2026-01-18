@@ -1,27 +1,34 @@
 'use server';
 
-import { cookies } from 'next/headers';
-
 export const getAllProducts = async () => {
   try {
-    const token = (await cookies()).get('token')?.value;
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/all-product`, {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        ...(token && { Authorization: `Bearer ${token}` }),
+      next: {
+        tags: ['PRODUCT'],
       },
-      cache: 'no-store',
     });
 
-    if (!res.ok) {
-      throw new Error(`Error fetching furniture: ${res.statusText}`);
-    }
+    const data = await res.json();
 
-    const result = await res.json();
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getSingleProducts = async (productId: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/all-product/${productId}`,
+      {
+        next: {
+          tags: ['PRODUCT'],
+        },
+      },
+    );
 
-    return Array.isArray(result?.data) ? result.data : [];
+    const data = await res.json();
+
+    return data.data;
   } catch (error) {
     console.log(error);
   }

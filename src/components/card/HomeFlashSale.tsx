@@ -14,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import Link from 'next/link';
 
 const HomeFlashSale = () => {
   const [product, setProduct] = useState<IProduct[]>([]);
@@ -61,9 +62,11 @@ const HomeFlashSale = () => {
                   </div>
 
                   <div>
-                    <p className='mt-2 line-clamp-2 text-[16px] font-medium'>
-                      {item.name}
-                    </p>
+                    <Link href={`/products/${item._id}`}>
+                      <p className='mt-2 line-clamp-2 text-[16px] font-medium'>
+                        {item.name}
+                      </p>
+                    </Link>
                     <p className='mt-2 text-[#db4444] font-semibold'>
                       ${item.price}
                     </p>
@@ -83,21 +86,6 @@ const HomeFlashSale = () => {
           <CarouselNext className='static h-10 w-10 rounded-full border bg-[#f5f5f5] shadow cursor-pointer' />
         </div>
       </Carousel>
-      <div className='flex justify-center mt-10'>
-        <Button
-          className='cursor-pointer
-    rounded-none
-    bg-[#db4444]
-    text-white
-    border border-transparent
-    hover:bg-white
-    hover:text-black
-    hover:border-[#db4444]
-    transition-colors'
-        >
-          View All Products
-        </Button>
-      </div>
     </div>
   );
 };

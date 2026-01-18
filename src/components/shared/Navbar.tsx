@@ -53,6 +53,19 @@ const Navbar = () => {
           </li>
           <li className='mr-10'>
             <Link
+              href='/products'
+              className={`relative group
+      ${
+        pathname === '/products'
+          ? 'text-[#db4444] after:w-full after:h-[2px] after:bg-[#db4444] after:absolute after:-bottom-1 after:left-0 after:rounded transition-all'
+          : 'text-black after:w-0 after:h-[2px] after:bg-[#db4444] after:absolute after:-bottom-1 after:left-0 after:rounded group-hover:after:w-full transition-all'
+      }`}
+            >
+              Products
+            </Link>
+          </li>
+          <li className='mr-10'>
+            <Link
               href='/about'
               className={`relative group
       ${
