@@ -1,4 +1,4 @@
-'use server';
+
 
 export const getAllProducts = async () => {
   try {
@@ -9,7 +9,6 @@ export const getAllProducts = async () => {
     });
 
     const data = await res.json();
-
     return data.data;
   } catch (error) {
     console.log(error);
@@ -27,7 +26,6 @@ export const getSingleProducts = async (productId: string) => {
     );
 
     const data = await res.json();
-
     return data.data;
   } catch (error) {
     console.log(error);

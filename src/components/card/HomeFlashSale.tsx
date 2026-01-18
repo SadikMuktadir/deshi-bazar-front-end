@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Link from 'next/link';
+import { Rating } from '@/components/ui/Rating';
 
 const HomeFlashSale = () => {
   const [product, setProduct] = useState<IProduct[]>([]);
@@ -70,7 +71,9 @@ const HomeFlashSale = () => {
                     <p className='mt-2 text-[#db4444] font-semibold'>
                       ${item.price}
                     </p>
-                    <p className='mt-2 text-[#ffad33]'>⭐ {item.rating}</p>
+                    <div className='mt-2 text-[#ffad33]'>
+                      <Rating value={item.rating}></Rating>
+                    </div>
                   </div>
 
                   <Button className='mt-2 w-full bg-black text-white'>
