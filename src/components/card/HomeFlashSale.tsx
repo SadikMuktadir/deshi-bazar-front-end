@@ -44,7 +44,7 @@ const HomeFlashSale = () => {
       </div>
     );
   if (product.length === 0)
-    return <p className='text-center'>No Product found.</p>;
+    return <p className='text-center'>No Product found....</p>;
 
   return (
     <div className='relative w-full'>
