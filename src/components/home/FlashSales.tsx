@@ -15,7 +15,7 @@ const FlashSales = () => {
           <TimerCom></TimerCom>
         </div> */}
       </div>
-      <div>
+      <div className='mt-10'>
         <HomeFlashSale></HomeFlashSale>
       </div>
       <div className='flex justify-center mt-10'>
