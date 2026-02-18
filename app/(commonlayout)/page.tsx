@@ -2,7 +2,6 @@ import Banner from '@/src/components/home/Banner';
 import BestSelling from '@/src/components/home/BestSelling';
 import BrowseByCategory from '@/src/components/home/BrowseByCategory';
 import FlashSales from '@/src/components/home/FlashSales';
-import NewArrival from '@/src/components/home/NewArrival';
 
 const Home = () => {
   return (
@@ -18,9 +17,6 @@ const Home = () => {
       </div>
       <div className='mt-[150px]'>
         <BestSelling></BestSelling>
-      </div>
-      <div className='mt-[150px]'>
-        <NewArrival></NewArrival>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarContent>
+      <SidebarContent className='bg-[#db4444] text-white'>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -36,7 +36,6 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              {/* My Profile */}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <a href={`/dashboard/${user.role}/my-profile`}>
@@ -56,7 +55,6 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              {/* ✅ ADMIN ONLY */}
               {user.role === 'admin' && (
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
